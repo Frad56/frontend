@@ -1,0 +1,62 @@
+<mat-card class="product-card">
+
+    <mat-card-title>Movement In Stock List</mat-card-title>
+  
+   
+    <div class="Add-button">
+      
+     
+      <button mat-raised-button color="primary" (click)="goBack()">
+        Back
+      </button>
+    </div>
+    <table mat-table [dataSource]="(movmentInStockList$ | async) || []" class="mat-elevation-z8">
+  
+  
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let movementInStock"> {{movementInStock.date}} </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="movementInStockType">
+        <th mat-header-cell *matHeaderCellDef> movement In Stock Type </th>
+        <td mat-cell *matCellDef="let movementInStock"> {{movementInStock.movementInStockType}}</td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="productVariantCode">
+        <th mat-header-cell *matHeaderCellDef> Product Variant Code </th>
+        <td mat-cell *matCellDef="let movementInStock"> {{movementInStock.productVariant?.code}} </td>
+      </ng-container>
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> quantity </th>
+        <td mat-cell *matCellDef="let movementInStock"> {{movementInStock.quantity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unitName">
+        <th mat-header-cell *matHeaderCellDef> Unit </th>
+        <td mat-cell *matCellDef="let movementInStock">
+          <ng-container *ngIf="movementInStock.movementInStockType === 'ENTRY'">
+            {{ movementInStock.purchaseOrderLine?.productUnitPurchase?.conversionFactor }} -
+            {{ movementInStock.purchaseOrderLine?.productUnitPurchase?.unit?.name }}
+          </ng-container>
+      
+          <ng-container *ngIf="movementInStock.movementInStockType === 'EXIT'">
+            {{ movementInStock.salesOrderLine?.productUnitSale?.conversionFactor }} -
+            {{ movementInStock.salesOrderLine?.productUnitSale?.unit?.name }}
+          </ng-container>
+        </td>
+      </ng-container>
+
+    
+      
+  
+     
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    </table>
+  
+  </mat-card>

@@ -1,0 +1,205 @@
+<div class="page-wrapper">
+  <div *ngIf="showMessage" class="custom-alert">
+    {{ message }}
+  </div>
+  <div class="page-header">
+    <div class="header-left">
+      <div class="breadcrumb">
+        <span class="breadcrumb-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        <span>Stock Management</span>
+       
+      </div>
+      <h1 class="page-title">Product Catalog</h1>
+      <p class="page-subtitle">Manage your entire product inventory from one place</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost" (click)="goBack()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back
+      </button>
+      <button class="btn btn-primary" (click)="addProduct()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Add Product
+      </button>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon stat-icon--blue">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </div>
+      <div class="stat-body">
+        <div class="stat-value">{{ (products$ | async)?.length || 0 }}</div>
+        <div class="stat-label">Total Products</div>
+      </div>
+    </div>
+   
+  </div>
+
+  <!-- Table Card -->
+  <div class="table-card">
+    <div class="table-card-header">
+      <div class="table-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+        All Products
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table mat-table [dataSource]="(products$ | async) || []" class="product-table">
+
+        <!-- ID 
+        <ng-container matColumnDef="product_id">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">ID</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="id-pill">#{{ product.productId }}</span>
+          </td>
+        </ng-container>
+              -->
+        <!-- Reference -->
+        <ng-container matColumnDef="reference">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Reference</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="ref-code">{{ product.reference }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Designation -->
+        <ng-container matColumnDef="designation">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Designation</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="truncate-cell" [title]="product?.designation">
+              {{ product?.designation }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Brand -->
+        <ng-container matColumnDef="brand">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Brand</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="brand-tag">{{ product?.brand }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Description</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="truncate-cell" [title]="product.description">
+              {{ product.description }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Price -->
+        <ng-container matColumnDef="basePrice">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Price</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="price-badge">{{ product.basePrice | currency:'TND':'symbol':'1.2-2' }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Category -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Category</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="category-chip">{{ product?.category?.name }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Aisle -->
+        <ng-container matColumnDef="aisle">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Place</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <span class="aisle-chip">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ product.aisle.name }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Actions -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>
+            <span class="th-content">Actions</span>
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <div class="actions-group">
+               <!-- <button class="action-btn action-btn--unit" (click)="addProductUnitsale(product.productId)" matTooltip="Add Unit Sale">
+                add Product Unit Sale
+              </button>
+              -->
+              <!-- <button  
+                      [disabled]="!productConditions[product.productId]"
+                      class="action-btn action-btn--unit"
+                      (click)="addCharacteristicValue()">
+                      Add Characteristic Value
+                    </button>
+-->
+
+                <button class="action-btn btn-list" (click)=" hasVariants(product.productId)" matTooltip="Add Variant">
+                  product Article List
+                  </button>
+              <button class="action-btn btn-add-variant" (click)="addProductVariant(product.productId)" matTooltip="Add Article">
+                 add Article
+              </button>
+              
+             <!--  <button class="action-btn btn-unit-sale" (click)="findProductUnitSale(product.productId)" matTooltip="see Product Unit Sale List">
+                 Unit Sale List
+              </button>
+            -->
+              <div class="icon-actions">
+                <button class="icon-btn icon-btn--edit" (click)="editProduct(product.productId)" matTooltip="Edit product">
+                  <img src="https://cdn-icons-png.flaticon.com/512/764/764599.png" alt="edit" width="20" height="20">
+
+                </button>
+                <button class="icon-btn icon-btn--delete" (click)="deleteProduct(product.productId)" matTooltip="Delete product">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="product-row"></tr>
+
+      </table>
+    
+      <!-- Empty state -->
+      <div class="empty-state" *ngIf="(products$ | async)?.length === 0">
+        <div class="empty-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3>No products found</h3>
+        <p>Start by adding your first product to the catalog</p>
+        <button class="btn btn-primary" (click)="addProduct()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Add First Product
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,43 @@
+<form [formGroup]="resetEmailForm" (ngSubmit)="onNext()" class="card">
+
+  <h2>Change Email</h2>
+
+
+  <div *ngIf="step === 1" class="input-group">
+    <input 
+      type="email"
+      formControlName="newEmail"
+      placeholder="Enter new email"
+    />
+  </div>
+
+
+  <div *ngIf="step === 2" class="input-group">
+    <input 
+      type="text"
+      formControlName="code"
+      placeholder="Enter verification code"
+    />
+
+  </div>
+  <div class="actions">
+      <button 
+        type="submit"
+        [disabled]="loading"
+      >
+        {{ loading 
+            ? 'Loading...' 
+            : (step === 1 ? 'Send Code' : 'Verify') 
+        }}
+      </button>
+
+      <button 
+      *ngIf="step === 2"
+      type="button"
+      (click)="onResendCode()"
+      [disabled]="loading"
+    >
+      Resend Code
+    </button>
+  </div>
+</form>

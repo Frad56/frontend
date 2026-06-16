@@ -1,0 +1,42 @@
+<div class="container">
+
+  <h2>Liste des devis</h2>
+
+  <table class="devis-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Client</th>
+        <th>Total</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let d of devisList">
+        <td>{{ d.id }}</td>
+        <td>{{ d.date }}</td>
+        <td>{{ d.client }}</td>
+        <td>{{ d.total }} DT</td>
+
+        <td class="actions">
+          <button class="btn view" (click)="selectDevis(d)">View</button>
+          <button class="btn delete" (click)="deleteDevis(d.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <div *ngIf="selectedDevis" class="details">
+    <h3>Détails du devis</h3>
+
+    <p><b>ID:</b> {{ selectedDevis.id }}</p>
+    <p><b>Date:</b> {{ selectedDevis.date }}</p>
+    <p><b>Client:</b> {{ selectedDevis.client }}</p>
+    <p><b>Total:</b> {{ selectedDevis.total }} DT</p>
+  </div>
+
+</div>

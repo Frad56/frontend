@@ -1,0 +1,32 @@
+<div class="search-container">
+    <form [formGroup]="searchClientForm" class="search-form">
+        <div class="input-wrapper">
+            <input 
+              type="text"
+              formControlName="searchValue"
+              placeholder="Search Client by First Name..."
+            />
+          </div>
+
+          <div *ngIf="!hasTyped" class="info-message">
+            Enter a Client first Name to start searching
+          </div>
+          <div *ngIf="hasTyped && filteredClients.length === 0" class="info-message error">
+            Client not found
+          </div>
+
+         
+    </form>
+    <div *ngIf="filteredClients.length > 0" class="results">
+        <div *ngFor="let client of filteredClients" class="client-card" (click)="selectClient(client)">
+        <div class="card-header">
+            <span class="code">{{ client.firstName }} {{ client.lastName }}</span>
+        </div>
+        <div class="card-body">
+            <p><strong>Email :</strong> {{ client.email }}</p>
+            <p><strong>First Name :</strong> {{ client.firstName }}</p>
+            <p><strong>Last Name :</strong> {{ client.lastName }}</p>
+            <p><strong>Phone Number :</strong> {{ client.phoneNumber }}</p>
+            <p><strong>Address :</strong> {{ client.address }}</p>
+        </div>
+        </div>

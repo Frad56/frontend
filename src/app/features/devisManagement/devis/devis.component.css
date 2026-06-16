@@ -1,0 +1,90 @@
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f9ff;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+  }
+  
+  /* TABLE */
+  .devis-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .devis-table th {
+    background: #1e40af;
+    color: white;
+    padding: 12px;
+  }
+  
+  .devis-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .devis-table tr:hover {
+    background: #e0f2fe;
+  }
+  
+  /* BUTTONS */
+  .btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 3px;
+    transition: 0.3s;
+  }
+  
+  .btn.view {
+    background: #2563eb;
+    color: white;
+  }
+  
+  .btn.view:hover {
+    background: #1d4ed8;
+  }
+  
+  .btn.delete {
+    background: #ef4444;
+    color: white;
+  }
+  
+  .btn.delete:hover {
+    background: #dc2626;
+  }
+  
+  /* STATUS BADGES */
+  .pending {
+    color: #d97706;
+    font-weight: bold;
+  }
+  
+  .validated {
+    color: #16a34a;
+    font-weight: bold;
+  }
+  
+  .rejected {
+    color: #dc2626;
+    font-weight: bold;
+  }
+  
+  /* DETAILS */
+  .details {
+    margin-top: 20px;
+    padding: 15px;
+    background: #dbeafe;
+    border-left: 5px solid #2563eb;
+    border-radius: 8px;
+  }

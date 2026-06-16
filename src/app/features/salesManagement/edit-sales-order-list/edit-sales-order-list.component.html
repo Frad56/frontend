@@ -1,0 +1,106 @@
+<mat-card class="supplier-card">
+
+    <mat-card-title>Edit Sale Oder items</mat-card-title>
+  
+    <div class="Add-button">
+      <button mat-raised-button color="primary" (click)="addSaleOrderLine()">
+        Add Sale to Order
+      </button>
+      <button mat-raised-button color="primary" (click)="goBack()">
+        Back
+      </button>
+    </div>
+    <table mat-table [dataSource]="(salesOrderLines) || []" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="productArticleCode">
+        <th mat-header-cell *matHeaderCellDef> Product Article Code </th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine?.productVariantCode}}  </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ProductReference">
+        <th mat-header-cell *matHeaderCellDef> Product Reference </th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine?.productReference}}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ProductDesignation">
+        <th mat-header-cell *matHeaderCellDef> Product Designation </th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine?.productDesignation}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ProductBrand">
+        <th mat-header-cell *matHeaderCellDef> Product Brand </th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine?.productBrand}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ProductChracteristic">
+        <th mat-header-cell *matHeaderCellDef> Product Chracteristic</th>
+        <td mat-cell *matCellDef="let salesOrderLine">
+          
+          <div *ngIf="characteristicsMap[salesOrderLine?.productVariantId] as chars">
+            
+            <span *ngFor="let c of (chars | keyvalue)">
+              {{ c.key }} : {{ c.value }}<br>
+            </span>
+      
+          </div>
+      
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantit">
+        <th mat-header-cell *matHeaderCellDef> quantity</th>
+        <td mat-cell *matCellDef="let salesOrderLine" > {{salesOrderLine.quantity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unitPrice">
+        <th mat-header-cell *matHeaderCellDef> unitPrice</th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine.unitPrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Product_Unit_Sale">
+        <th mat-header-cell *matHeaderCellDef> <div class="header-title"> Unit* </div></th>
+        <td mat-cell  *matCellDef="let salesOrderLine">
+            {{salesOrderLine?.productUnitSaleName}}
+        </td>
+    </ng-container>
+
+      <ng-container matColumnDef="discount">
+        <th mat-header-cell *matHeaderCellDef> discount</th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine.discount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> total</th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine.total}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalAfterDiscount">
+        <th mat-header-cell *matHeaderCellDef> total After Discount</th>
+        <td mat-cell *matCellDef="let salesOrderLine"> {{salesOrderLine.totalAfterDiscount}} </td>
+      </ng-container>
+
+  
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let salesOrderLine">
+          
+          <!-- Edit -->
+          <button mat-icon-button matTooltip="Edit" class="btn-edit" (click)="editSaleOrderLine(salesOrderLine?.salesOrderLineId)">
+            <img src="https://cdn-icons-png.flaticon.com/512/764/764599.png" alt="edit" width="20" height="20">
+          </button>
+      
+          <!-- Delete -->
+          <button mat-icon-button matTooltip="Delete" class="btn-delete" (click)="deleteSaleOrderLine(salesOrderLine?.salesOrderLineId)">
+            <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png" alt="delete" width="20" height="20">
+          </button>
+      
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    </table>
+  
+  </mat-card>

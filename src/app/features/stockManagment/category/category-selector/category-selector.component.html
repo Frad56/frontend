@@ -1,0 +1,24 @@
+
+<ul class="tree" *ngIf="categories?.length">
+  <li *ngFor="let cat of categories">
+
+    <div class="item-row">
+      <span class="item">› {{ cat.name }}</span>
+
+      <button mat-icon-button
+              matTooltip="Delete"
+              class="btn-delete"
+              (click)="deleteCategory(cat.categoryId)">
+        <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png"
+             alt="delete" width="16" height="16">
+      </button>
+    </div>
+
+    <app-category-selector
+      *ngIf="cat.children?.length"
+      [categories]="cat.children"
+      (categoryDeleted)="categoryDeleted.emit()">
+    </app-category-selector>
+
+  </li>
+</ul>

@@ -1,0 +1,50 @@
+<div class="search-container">
+
+  <form [formGroup]="searchProductForm" class="search-form">
+    <div class="input-wrapper">
+      <input 
+        type="text"
+        formControlName="searchValue"
+        placeholder="Search product by code..."
+      />
+    </div>
+  </form>
+
+
+  <div *ngIf="!hasTyped" class="info-message">
+    Enter a product code to start searching
+  </div>
+
+  <div *ngIf="hasTyped && filteredProducts.length === 0" class="info-message error">
+    Product not found
+  </div>
+
+
+  <div *ngIf="filteredProducts.length > 0" class="results">
+
+    <div *ngFor="let productVariant of filteredProducts"
+         class="product-card"
+         (click)="selectProduct(productVariant)">
+
+      <div class="card-header">
+        <span class="code">{{ productVariant.code }}</span>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Reference :</strong> {{ productVariant.product.reference }}</p>
+        <p><strong>Brand :</strong> {{ productVariant.product.brand }}</p>
+        <p><strong>description :</strong> {{ productVariant.product.description }}</p>
+        <p><strong>Price :</strong> {{ productVariant.specificPrice }} DT</p>
+        <p><strong>Quantity :</strong> {{ productVariant.quantityInStock }}</p>
+        <div *ngFor="
+          let item of characteristicsMap[productVariant.productVariantId] | keyvalue
+        ">
+          {{ item.key }} : {{ item.value }}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

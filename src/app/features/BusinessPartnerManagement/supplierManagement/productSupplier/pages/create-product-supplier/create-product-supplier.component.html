@@ -1,0 +1,40 @@
+<h2 class="title"> Product Supplier Management </h2>
+<div class="form-container">
+<form  [formGroup]="form" (ngSubmit)="OnSubmit()" class="product-supplier-form">
+<!-- Product -->
+<mat-form-field appearance="outline"  class="full-width">
+    <mat-label >Product</mat-label>
+    <mat-select formControlName="productId">
+      <mat-option *ngFor="let product of products |async" 
+      [value]="product.productId" >{{ product.reference }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<!-- Supplier -->
+ 
+  <mat-form-field appearance="outline"  class="full-width">
+    <mat-label>Supplier</mat-label>
+    <mat-select formControlName="supplierId">
+      <mat-option *ngFor="let supplier of suppliers |async" 
+      [value]="supplier.supplierId"> {{ supplier.companyName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Price -->
+    <mat-form-field appearance="outline"  class="full-width">
+        <mat-label  >Price</mat-label>
+        <input matInput type="number" formControlName="purchasePrice" placeholder="Price">
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button class="Create-button" color="primary" type="submit">
+        Create 
+      </button>
+      <button type="button" class="back-button" mat-raised-button color="primary"
+                (click)="goBack()">
+        Back
+      </button>
+  </div>
+</form>
+
+</div>

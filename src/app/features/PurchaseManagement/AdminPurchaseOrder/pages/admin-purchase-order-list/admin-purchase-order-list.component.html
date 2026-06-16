@@ -1,0 +1,62 @@
+
+<mat-card class="product-card">
+
+  <mat-card-title>Purchase Order List</mat-card-title>
+  <div class="Add-button">
+    
+  
+    <button mat-raised-button color="primary" (click)="goBack()">
+      Back
+    </button>
+  </div>
+  <table mat-table [dataSource]="purchaseOrders|| []" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="companyName">
+      <th mat-header-cell *matHeaderCellDef> Supplier company Name </th>
+      <td mat-cell *matCellDef="let purchaseOrder"> {{purchaseOrder.supplier.companyName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="contactName">
+      <th mat-header-cell *matHeaderCellDef> Supplier contact Name</th>
+      <td mat-cell *matCellDef="let purchaseOrder"> {{purchaseOrder.supplier.contactName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="orderDate">
+      <th mat-header-cell *matHeaderCellDef> order Date </th>
+      <td mat-cell *matCellDef="let purchaseOrder">  {{ purchaseOrder.orderDate | date:'dd/MM/yyyy HH:mm' }} </td>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="totalAmount">
+      <th mat-header-cell *matHeaderCellDef> total Amount  </th>
+      <td mat-cell *matCellDef="let purchaseOrder"> {{purchaseOrder.totalAmount}} </td>
+  </ng-container>
+
+
+  <!-- Actions -->
+  <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let purchaseOrder">
+
+  <!-- Edit -->
+  <button mat-icon-button matTooltip="Edit" class="btn-edit"  (click)="editPurchaseOrderLineList(purchaseOrder.purchaseOrderId)">
+      <img src="https://cdn-icons-png.flaticon.com/512/764/764599.png" alt="edit" width="20" height="20" >
+  </button>
+    
+  <!-- Delete -->
+  <button mat-icon-button matTooltip="Delete" class="btn-delete" (click)="deletePurchaseOrder(purchaseOrder.purchaseOrderId)">
+    <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png" alt="delete" width="20" height="20">
+  </button>
+    
+  </td>
+  </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+</mat-card>

@@ -1,0 +1,69 @@
+<div class="page">
+
+  <mat-card class="menu-card">
+
+    <div class="language-switcher">
+
+      <button mat-button (click)="changeLanguage('en')">
+        🇬🇧 English Français
+      </button>
+    
+      <button mat-button (click)="changeLanguage('fr')">
+        🇫🇷 Français
+      </button>
+    
+    </div>
+    <div class="header">
+      <h2>{{ 'CATEGORY.MANAGEMENT' | translate }}</h2>
+      <p>{{ 'CATEGORY.DESCRIPTION' | translate }}</p>
+    </div>
+
+    <div class="button-container">
+      <button translate mat-raised-button class="btn-blue" (click)="addCategory() ">
+        {{ 'CATEGORY.ADD_CATEGORY' | translate }}
+      </button>
+    </div>
+
+    <div class="menu-wrapper" *ngIf="roots.length">
+
+      <nav class="top-nav">
+        <a
+          *ngFor="let root of roots"
+          class="nav-item"
+          [class.active]="activeRoot?.categoryId === root.categoryId"
+          (mouseenter)="setActive(root)">
+          {{ root.name }}
+        </a>
+      </nav>
+
+      <div class="mega-menu" *ngIf="activeRoot">
+
+        <div class="column" *ngFor="let child of activeRoot.children">
+
+          <div class="column-header">
+
+            <h3>{{ child.name }}</h3>
+
+            <button mat-icon-button
+                    class="btn-delete"
+                    (click)="deleteCategory(child.categoryId)">
+              <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png"
+                   alt="delete">
+            </button>
+
+          </div>
+
+          <app-category-selector
+            [categories]="child.children"
+            (categoryDeleted)="onCategoryDeleted()">
+          </app-category-selector>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </mat-card>
+
+</div>

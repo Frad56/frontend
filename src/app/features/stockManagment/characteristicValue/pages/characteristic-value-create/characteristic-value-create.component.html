@@ -1,0 +1,58 @@
+<h2 class="title">Create Characteristic Value</h2>
+
+<div class="form-container">
+  <form [formGroup]="characteristicValueForm" (ngSubmit)="onSubmit()" class="product-supplier-form">
+
+  
+   <!-- productCharacteristic  -->
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Characteristic</mat-label>
+        <div formGroupName="productCharacteristicId">
+
+          <div *ngFor="let pc of productCharacteristics$ | async">
+            <mat-checkbox
+              [formControlName]="pc.characteristic.characteristicId">
+              
+              {{ pc.characteristic.name }}
+              
+            </mat-checkbox>
+          </div>
+        
+        </div>
+      </mat-form-field>
+
+    <!-- productVariant  -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Product Variant </mat-label>
+      <mat-select formControlName="productVariantId">
+        <mat-option *ngFor="let productVariant of productVariants$ | async"
+                    [value]="productVariant.productVariantId" >
+          {{ productVariant.code }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+     <!-- Value -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Value</mat-label>
+      <input matInput type="text" formControlName="value" placeholder="designation">
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button class="Create-button" color="primary" type="submit">
+        Create
+      </button>
+
+      <button type="button"
+              class="back-button"
+              mat-raised-button
+              color="primary"
+              (click)="goBack()">
+        Back
+      </button>
+    </div>
+
+  </form>
+</div>
+

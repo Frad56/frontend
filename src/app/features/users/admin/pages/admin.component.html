@@ -1,0 +1,416 @@
+
+<div class="sb-nav-fixed">
+
+  <!-- 
+       TOP NAVBAR
+   -->
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+
+    <!-- Brand -->
+    <a class="navbar-brand ps-3" routerLink="/dashboard">
+      <img src="assets/logo.png" alt="logo" style="width:160px;" />
+    </a>
+
+    <!-- Sidebar Toggle -->
+    <button
+      class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+      (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+   
+
+   <!-- Search -->
+<div class="d-none d-md-inline-block ms-auto me-0 me-md-3 my-2 my-md-0" style="position:relative">
+  <div class="input-group">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Search menu..."
+      [formControl]="searchQuery"
+      (input)="onSearch()"
+      (keydown.escape)="clearSearch()"
+      autocomplete="off"
+    />
+    <button class="btn btn-primary" type="button">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+
+  <!-- Dropdown résultats trouvés -->
+  <div *ngIf="searchResults.length > 0 && searchQuery.value"
+       class="search-results-dropdown shadow">
+    <div *ngFor="let item of searchResults"
+         class="search-result-item"
+         (click)="navigateTo(item)">
+      <i class="fas {{item.icon}} me-2 text-muted"></i>
+      <div>
+        <div>{{ item.label }}</div>
+        <small class="text-muted">{{ item.path }}</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdown aucun résultat -->
+  <div *ngIf="searchQuery.value && searchResults.length === 0"
+       class="search-results-dropdown shadow">
+    <div class="p-3 text-muted text-center" style="font-size:13px">No results found</div>
+  </div>
+</div>
+
+    <!-- User dropdown -->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"
+           id="navbarDropdown"
+           href="#"
+           role="button"
+           data-bs-toggle="dropdown"
+           aria-expanded="false">
+          <i class="fas fa-user fa-fw"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li>
+            <a class="dropdown-item" (click)="changePassword() ">
+              <i class="fas fa-key me-2"></i> Change Password
+            </a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </nav>
+  <!-- END TOP NAVBAR -->
+
+
+  <!-- 
+       BODY : SIDEBAR + CONTENT
+   -->
+  <div id="layoutSidenav">
+
+    <!-- 
+         SIDEBAR
+     -->
+    <div id="layoutSidenav_nav" [class.d-none]="sidebarHidden">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+
+
+            <!-- ── STOCK MANAGEMENT ── -->
+            <div class="sb-sidenav-menu-heading">Stock</div>
+
+            <a class="nav-link collapsed" href="#"
+               data-bs-toggle="collapse"
+               data-bs-target="#collapseStock"
+               aria-expanded="false"
+               aria-controls="collapseStock">
+              <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+              Stock Management
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseStock" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav accordion" id="accordionStock">
+
+                <!-- Product Management -->
+                <a class="nav-link collapsed" href="#"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#collapseProduct"
+                   aria-expanded="false">
+                  <i class="fas fa-box me-2"></i> Product Management
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseProduct" data-bs-parent="#accordionStock">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" id="menu-item-products" (click)="getProducts() ">
+                      <i class="fas fa-list me-2"></i> Products List
+                    </a>
+                  </nav>
+                </div>
+
+                <!-- Category Management -->
+                <a class="nav-link collapsed" href="#"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#collapseCategory"
+                   aria-expanded="false">
+                  <i class="fas fa-tags me-2"></i> Category Management
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseCategory" data-bs-parent="#accordionStock">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link"  id="menu-item-category"  (click)="getCategory() ">
+                      <i class="fas fa-list me-2"></i> Category List
+                    </a>
+                  </nav>
+                </div>
+
+                <!-- Add Product Supplier -->
+                <a class="nav-link"    id="menu-item-prod-supplier" (click)="addProductSupplier() ">
+                  <i class="fas fa-truck-loading me-2"></i> Add Product Supplier
+                </a>
+
+                <!-- Characteristic Management -->
+                <a class="nav-link collapsed" href="#"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#collapseChar"
+                   aria-expanded="false">
+                  <i class="fas fa-sliders-h me-2"></i> Characteristic Management
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseChar" data-bs-parent="#accordionStock">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link"  id="menu-item-char-add"  (click)="addCharacteristic() ">
+                      <i class="fas fa-plus me-2"></i> Add Characteristic
+                    </a>
+                    <a class="nav-link" id="menu-item-char-list" (click)="allCharacteristic() ">
+                      <i class="fas fa-list me-2"></i> Characteristic List
+                    </a>
+                  </nav>
+                </div>
+
+                <!-- Aisle Management -->
+                <a class="nav-link collapsed" href="#"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#collapseAisle"
+                   aria-expanded="false">
+                  <i class="fas fa-th me-2"></i> Aisle Management
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseAisle" data-bs-parent="#accordionStock">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link"  id="menu-item-aisle-add"  (click)="addAisle() ">
+                      <i class="fas fa-plus me-2"></i> Add Aisle
+                    </a>
+                    <a class="nav-link"  id="menu-item-aisle-list"  (click)="allAisle() ">
+                      <i class="fas fa-list me-2"></i> Aisle List
+                    </a>
+                  </nav>
+                </div>
+
+                <!-- Product Unit Sale Management -->
+                <a class="nav-link collapsed" href="#"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#collapseUnitSale"
+                   aria-expanded="false">
+                  <i class="fas fa-ruler me-2"></i> Product Unit Sale
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseUnitSale" data-bs-parent="#accordionStock">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" (click)="addProductUnitsale() ">
+                      <i class="fas fa-plus me-2"></i> Add Product Unit Sale
+                    </a>
+                    <a class="nav-link" (click)="allProductUnitsale() ">
+                      <i class="fas fa-list me-2"></i> All Product Unit Sale
+                    </a>
+                  </nav>
+                </div>
+
+                <!-- Product Variant Management -->
+                <a class="nav-link collapsed" href="#"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#collapseVariant"
+                   aria-expanded="false">
+                  <i class="fas fa-layer-group me-2"></i> Product Variant
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseVariant" data-bs-parent="#accordionStock">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" id="menu-item-variant-add" (click)="addProductVariant() ">
+                      <i class="fas fa-plus me-2"></i> Add Product Variant
+                    </a>
+                    <a class="nav-link" id="menu-item-variant-list" (click)="allProductVariant() ">
+                      <i class="fas fa-list me-2"></i> All Product Variants
+                    </a>
+                  </nav>
+                </div>
+
+                <!-- Unit Management -->
+                <a class="nav-link collapsed" href="#"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#collapseUnit"
+                   aria-expanded="false">
+                  <i class="fas fa-balance-scale me-2"></i> Unit Management
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseUnit" data-bs-parent="#accordionStock">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" id="menu-item-unit-add"  (click)="addUnit() ">
+                      <i class="fas fa-plus me-2"></i> Add Unit
+                    </a>
+                    <a class="nav-link"  id="menu-item-unit-list"  (click)="allUnits() ">
+                      <i class="fas fa-list me-2"></i> All Units
+                    </a>
+                  </nav>
+                </div>
+
+              </nav>
+            </div>
+            <!-- END STOCK MANAGEMENT -->
+
+
+            <!--  USER MANAGEMENT  -->
+            <div class="sb-sidenav-menu-heading">Users</div>
+
+            <a class="nav-link collapsed" id="menu-item-add-usert" href="/admin/add-user"
+               data-bs-toggle="collapse"
+               data-bs-target="#collapseUsers"
+               aria-expanded="false"
+               aria-controls="collapseUsers">
+              <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+              User Management
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseUsers" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" (click)="signUp() ">
+                  <i class="fas fa-user-plus me-2"></i> Add User
+                </a>
+              </nav>
+            </div>
+
+
+            <!--  SUPPLIER MANAGEMENT  -->
+            <div class="sb-sidenav-menu-heading">Suppliers</div>
+
+            <a class="nav-link collapsed" href="/admin/suppliers/suppliers"
+               data-bs-toggle="collapse"
+               data-bs-target="#collapseSuppliers"
+               aria-expanded="false"
+               aria-controls="collapseSuppliers">
+              <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
+              Supplier Management
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseSuppliers" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" id="menu-item-add-supplier" (click)="addSupplier() ">
+                  <i class="fas fa-plus me-2"></i> Add Supplier
+                </a>
+                <a class="nav-link"   id="menu-item-all-supplier" (click)="allSuppliers() ">
+                  <i class="fas fa-list me-2"></i> All Suppliers
+                </a>
+              </nav>
+            </div>
+
+
+            <!--  CLIENT MANAGEMENT  -->
+            <div class="sb-sidenav-menu-heading">Clients</div>
+
+            <a class="nav-link collapsed" href="/admin/client/client-all"
+               data-bs-toggle="collapse"
+               data-bs-target="#collapseClients"
+               aria-expanded="false"
+               aria-controls="collapseClients">
+              <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+              Client Management
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseClients" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" id="menu-item-add-client"  (click)="addClient() ">
+                  <i class="fas fa-user-plus me-2"></i> Add Client
+                </a>
+                <a class="nav-link"  id="menu-item-all-clients"  (click)="allClients() ">
+                  <i class="fas fa-list me-2"></i> All Clients
+                </a>
+              </nav>
+            </div>
+
+
+            <!-- ── STOCK MOVEMENT ── -->
+            <div class="sb-sidenav-menu-heading">Movements</div>
+
+            <a class="nav-link collapsed" href="#"
+               data-bs-toggle="collapse"
+               data-bs-target="#collapseMovement"
+               aria-expanded="false"
+               aria-controls="collapseMovement">
+              <div class="sb-nav-link-icon"><i class="fas fa-exchange-alt"></i></div>
+              Stock Movement
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseMovement" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link"   id="menu-item-add-purchase"  (click)="addPurchaseOrder() ">
+                  <i class="fas fa-file-invoice me-2"></i> Add Purchase Operation
+                </a>
+                <a class="nav-link"  id="menu-item-purchase-list"  (click)="NotDeliveredPurchaseOrders() ">
+                  <i class="fas fa-list me-2"></i> Purchase Operation List
+                </a>
+                <a class="nav-link" id="menu-item-add-sale"  (click)="addSale() ">
+                  <i class="fas fa-cash-register me-2"></i> Add Sale
+                </a>
+                <a class="nav-link"   id="menu-item-sales-list"  (click)="salesOrderList() ">
+                  <i class="fas fa-receipt me-2"></i> Sales List
+                </a>
+                <a class="nav-link" id="menu-item-quotation" (click)="addQuatation()">
+                  <i class="fas fa-file-invoice me-2"></i> Add Quotation
+                </a>
+                <a class="nav-link" id="menu-item-quotation-list" (click)="quatationList()">
+                  <i class="fas fa-file-invoice-dollar me-2"></i> Quotation List
+                </a>
+                <a class="nav-link" id="menu-item-stock-mvt"  (click)="allMovmentInStock() ">
+                  <i class="fas fa-warehouse me-2"></i> Stock Movement
+                </a>
+              </nav>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Sidebar footer -->
+        <div class="sb-sidenav-footer">
+          <div class="small">Logged in as:</div>
+          {{ currentUser }}
+        </div>
+
+      </nav>
+    </div>
+    <!-- END SIDEBAR -->
+
+
+    <!-- 
+         MAIN CONTENT
+     -->
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid px-4">
+
+          <!-- Page title / breadcrumb injected by child routes -->
+          <router-outlet></router-outlet>
+
+        </div>
+      </main>
+
+      <!-- Footer
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted d-flex align-items-center gap-2">
+              <img src="assets/logo.png" alt="logo" style="width:160px;" />
+            </div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+ -->
+    </div>
+    <!-- END MAIN CONTENT -->
+
+  </div>
+  <!-- END layoutSidenav -->
+
+</div>
+<!-- END sb-nav-fixed -->

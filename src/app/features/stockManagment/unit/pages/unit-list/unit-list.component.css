@@ -1,0 +1,89 @@
+.btn-edit img {
+    filter: invert(29%) sepia(89%) saturate(1200%) hue-rotate(196deg) brightness(90%) contrast(95%);
+    /* résultat : bleu #1976d2 */
+  }
+  
+  .btn-delete img {
+    filter: invert(20%) sepia(90%) saturate(2000%) hue-rotate(345deg) brightness(95%) contrast(95%);
+    /* résultat : rouge #e53935 */
+  }
+  .page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    background: #f0f4f8;
+  }
+  
+  /* CARD */
+  .form-card {
+    width: 900px;
+    padding: 25px;
+    border: 2px solid rgba(18, 51, 117, 0.9);
+    background-color: rgb(242, 248, 250);
+    border-radius: 12px;
+  }
+  
+  /* TITLE */
+  .title {
+    text-align: center;
+    color: #123375;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  /* TOP BUTTONS */
+  .top-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  /* TABLE */
+  .custom-table {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* HEADER */
+  th {
+    background: #123375 !important;
+    color: white !important;
+    font-weight: 600;
+  }
+  
+  /* ROW */
+  td {
+    padding: 10px;
+  }
+  
+  tr:hover {
+    background: #eef3ff;
+  }
+  
+  /* BUTTONS */
+  .btn-blue {
+    background-color: #123375 !important;
+    color: white !important;
+  }
+  
+  .btn-outline {
+    border: 1px solid #123375 !important;
+    color: #123375 !important;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 1000px) {
+    .form-card {
+      width: 100%;
+    }
+  
+    .top-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }

@@ -1,0 +1,44 @@
+.tree {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.tree li {
+  margin-bottom: 8px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #f8fbff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  border-left: 3px solid #123375;
+}
+
+.item {
+  color: #123375;
+  font-weight: 500;
+}
+
+.btn-delete img {
+  width: 14px;
+  height: 14px;
+}
+  .btn-delete img {
+    width: 12px;
+    height: 12px;
+    filter: invert(20%) sepia(90%) saturate(2000%) hue-rotate(345deg) brightness(95%) contrast(95%);
+  }
+  .btn-delete {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }

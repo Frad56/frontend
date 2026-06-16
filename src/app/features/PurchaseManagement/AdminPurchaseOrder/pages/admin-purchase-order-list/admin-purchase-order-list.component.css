@@ -1,0 +1,17 @@
+.btn-edit img {
+    filter: invert(29%) sepia(89%) saturate(1200%) hue-rotate(196deg) brightness(90%) contrast(95%);
+    /* résultat : bleu #1976d2 */
+  }
+  
+  .btn-delete img {
+    filter: invert(20%) sepia(90%) saturate(2000%) hue-rotate(345deg) brightness(95%) contrast(95%);
+    /* résultat : rouge #e53935 */
+  }
+  .Add-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    gap: 10px; 
+  }
+
+  

@@ -1,0 +1,36 @@
+<div *ngFor="let product of items" class="cart-item">
+
+    <span>{{ product.code }}</span>
+    <input
+      type="number"
+      [(ngModel)]="product.unitPrice"
+      (ngModelChange)="notify()"
+      min="0"
+      />
+      <span>Discount</span>
+      <input
+      type="number"
+      [(ngModel)]="product.discount"
+      (ngModelChange)="notify()"
+      min="0"
+      />
+       <mat-select placeholder="Select unit"
+       (selectionChange)="onSaleUnitSelected(product, $event.value)">
+       <mat-option
+         *ngFor="let pus of productUnitPurchaseMap.get(product.productVariantId) || []"
+         [value]="pus">
+         {{ pus.unit.name }} — {{ pus.unitPrice }}
+       </mat-option>
+     </mat-select>
+    <button (click)="addProductVariantUnitSale(product.productVariantId)">+</button>
+
+   
+    <button (click)="decreaseQuantity(product)">-</button>
+    <span>{{ product.quantity }}</span>
+    <button (click)="increaseQuantity(product)">+</button>
+  
+
+    <button mat-icon-button matTooltip="Delete" class="btn-delete"(click)="removeProduct(product)">
+      <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png" alt="delete" width="20" height="20">
+    </button>
+  </div>

@@ -1,0 +1,25 @@
+.checkout {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkout button {
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.checkout button:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.checkout button:active {
+  transform: translateY(0);
+}

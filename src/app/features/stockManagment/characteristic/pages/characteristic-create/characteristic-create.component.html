@@ -1,0 +1,41 @@
+<div class="page">
+
+  <mat-card class="form-card">
+
+    <h2 class="title">Create Characteristic</h2>
+
+    <form [formGroup]="characteristicForm" (ngSubmit)="onSubmit()" class="form">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" placeholder="Characteristic">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Characteristic Type Value</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of characteristicTypeValues"
+                      [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button-group">
+        <button mat-raised-button class="btn-blue" type="submit">
+          Create
+        </button>
+
+        <button type="button"
+                mat-stroked-button
+                class="btn-outline"
+                (click)="goBack()">
+          Back
+        </button>
+      </div>
+
+    </form>
+
+  </mat-card>
+
+</div>

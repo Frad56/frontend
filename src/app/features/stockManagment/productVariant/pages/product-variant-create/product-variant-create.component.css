@@ -1,0 +1,119 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: #f0f4f8;
+}
+
+/* CARD (identique Edit) */
+.form-card {
+  width: 650px;
+  padding: 25px;
+  border: 2px solid rgba(18, 51, 117, 0.9);
+  background-color: rgb(242, 248, 250);
+  border-radius: 12px;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  color: #123375;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* GRID */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* PRODUCT BADGE */
+.product-badge {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.badge-label {
+  background: #123375;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.badge-value {
+  color: #123375;
+  font-weight: 600;
+}
+
+/* CHARACTERISTICS */
+.char-section {
+  margin-top: 10px;
+}
+
+/* TABLE */
+.custom-table {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background: #123375 !important;
+  color: white !important;
+}
+
+td {
+  padding: 8px;
+}
+
+/* INPUT */
+.table-input {
+  width: 100%;
+}
+
+/* BUTTONS */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* PRIMARY */
+.btn-blue {
+  background-color: #123375 !important;
+  color: white !important;
+}
+
+/* OUTLINE */
+.btn-outline {
+  border: 1px solid #123375 !important;
+  color: #123375 !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .form-card {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

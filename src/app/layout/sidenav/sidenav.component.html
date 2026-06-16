@@ -1,0 +1,119 @@
+<nav class="sb-sidenav accordion sb-sidenav-dark" 
+     id="sidenavAccordion"
+     [class.sb-sidenav--toggled]="isToggled">
+
+  <div class="sb-sidenav-menu">
+    <div class="nav">
+
+      <!-- Titre de section -->
+      <div class="sb-sidenav-menu-heading">Principal</div>
+
+      <!-- Lien simple : Dashboard -->
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+        <div class="sb-nav-link-icon">
+          <i class="fas fa-tachometer-alt"></i>
+        </div>
+        Dashboard
+      </a>
+
+      <!-- Titre de section -->
+      <div class="sb-sidenav-menu-heading">Interface</div>
+
+      <!-- Lien avec sous-menu : Layouts -->
+      <a class="nav-link collapsed" 
+         href="#" 
+         data-bs-toggle="collapse" 
+         data-bs-target="#collapseLayouts"
+         aria-expanded="false">
+        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+        Layouts
+        <div class="sb-sidenav-collapse-arrow">
+          <i class="fas fa-angle-down"></i>
+        </div>
+      </a>
+      <div class="collapse" id="collapseLayouts" data-bs-parent="#sidenavAccordion">
+        <nav class="sb-sidenav-menu-nested nav">
+          <a class="nav-link" routerLink="/layout/static">Navigation Statique</a>
+          <a class="nav-link" routerLink="/layout/light">Sidenav Clair</a>
+        </nav>
+      </div>
+
+      <!-- Lien avec sous-menu : Pages -->
+      <a class="nav-link collapsed" 
+         href="#" 
+         data-bs-toggle="collapse" 
+         data-bs-target="#collapsePages"
+         aria-expanded="false">
+        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+        Pages
+        <div class="sb-sidenav-collapse-arrow">
+          <i class="fas fa-angle-down"></i>
+        </div>
+      </a>
+      <div class="collapse" id="collapsePages" data-bs-parent="#sidenavAccordion">
+        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+
+          <!-- Sous-sous-menu : Authentification -->
+          <a class="nav-link collapsed" 
+             href="#" 
+             data-bs-toggle="collapse" 
+             data-bs-target="#pagesCollapseAuth">
+            Authentification
+            <div class="sb-sidenav-collapse-arrow">
+              <i class="fas fa-angle-down"></i>
+            </div>
+          </a>
+          <div class="collapse" id="pagesCollapseAuth" data-bs-parent="#sidenavAccordionPages">
+            <nav class="sb-sidenav-menu-nested nav">
+              <a class="nav-link" routerLink="/auth/login">Connexion</a>
+              <a class="nav-link" routerLink="/auth/register">Inscription</a>
+              <a class="nav-link" routerLink="/auth/password">Mot de passe oublié</a>
+            </nav>
+          </div>
+
+          <!-- Sous-sous-menu : Erreurs -->
+          <a class="nav-link collapsed" 
+             href="#" 
+             data-bs-toggle="collapse" 
+             data-bs-target="#pagesCollapseError">
+            Erreurs
+            <div class="sb-sidenav-collapse-arrow">
+              <i class="fas fa-angle-down"></i>
+            </div>
+          </a>
+          <div class="collapse" id="pagesCollapseError" data-bs-parent="#sidenavAccordionPages">
+            <nav class="sb-sidenav-menu-nested nav">
+              <a class="nav-link" routerLink="/error/401">Page 401</a>
+              <a class="nav-link" routerLink="/error/404">Page 404</a>
+              <a class="nav-link" routerLink="/error/500">Page 500</a>
+            </nav>
+          </div>
+
+        </nav>
+      </div>
+
+      <!-- Titre de section -->
+      <div class="sb-sidenav-menu-heading">Extras</div>
+
+      <!-- Lien simple : Charts -->
+      <a class="nav-link" routerLink="/charts" routerLinkActive="active">
+        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+        Graphiques
+      </a>
+
+      <!-- Lien simple : Tables -->
+      <a class="nav-link" routerLink="/tables" routerLinkActive="active">
+        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+        Tableaux
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Pied du sidenav : utilisateur connecté -->
+  <div class="sb-sidenav-footer">
+    <div class="small">Connecté en tant que :</div>
+    {{ username }}
+  </div>
+
+</nav>

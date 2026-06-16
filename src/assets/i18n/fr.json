@@ -1,0 +1,14 @@
+{
+  "CATEGORY": {
+    "MANAGEMENT": "Gestion des catégories",
+    "DESCRIPTION": "Gérer les catégories et sous-catégories",
+    "ADD_CATEGORY": "Ajouter une catégorie",
+    "DELETE": "Supprimer"
+  },
+  "CHEKOUT": {
+    "MANAGEMENT": "Gestion du devis",
+    "DESCRIPTION": "Gérer le devis et les informations associées",
+    "ADD_CHEKOUT": "Ajouter un devis",
+    "DELETE": "Supprimer"
+  }
+}

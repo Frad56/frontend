@@ -1,0 +1,145 @@
+/* 🌐 Global container */
+:host {
+    display: block;
+    padding: 20px;
+    background: linear-gradient(135deg, #eef6ff, #ffffff);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* 🧾 Title */
+  mat-card-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #1565c0;
+    margin-bottom: 20px;
+    display: block;
+  }
+  
+  /* 🔘 Buttons */
+  button[mat-raised-button] {
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  /* Primary button */
+  button[color="primary"] {
+    background: linear-gradient(135deg, #1e88e5, #125387);
+    color: white;
+  }
+  
+  button[color="primary"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
+  }
+  
+  /* Accent button */
+  button[color="accent"] {
+    background: linear-gradient(135deg, #1f5dba, #1f5dba);
+    color: white;
+  }
+  
+  button[color="accent"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 172, 193, 0.4);
+  }
+  
+  /* 📦 Add button container */
+  .Add-button {
+    margin-bottom: 15px;
+  }
+  
+  /* 📊 Table styling */
+  table {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Header */
+  th.mat-header-cell {
+    background: #e3f2fd;
+    color: #0d47a1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  /* Rows */
+  td.mat-cell {
+    font-size: 13px;
+    color: #333;
+  }
+  
+  /* Hover effect */
+  tr.mat-row:hover {
+    background: #f1f8ff;
+    transition: 0.2s;
+  }
+  
+  /* Checkbox spacing */
+  mat-checkbox {
+    margin: 10px 0;
+  }
+  
+  /* Selected section */
+  h3 {
+    margin-top: 20px;
+    color: #1565c0;
+  }
+  
+  /* Empty list */
+  div:has(> :not(*)) {
+    color: #999;
+  }
+  
+  /* Empty text */
+  div:empty::before {
+    content: "No data available";
+    color: #aaa;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    table {
+      font-size: 12px;
+    }
+  
+    mat-card-title {
+      font-size: 20px;
+    }
+  }
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header mat-card-title {
+    margin: 0;
+  }
+  
+
+  .header button {
+    height: 40px;
+  }
+
+  ::ng-deep .mat-mdc-checkbox .mdc-checkbox__background {
+    border-radius: 6px; /* coins arrondis */
+  }
+  
+  /* ✔️ Quand coché */
+  ::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background {
+    background: linear-gradient(135deg, #1e88e5, #42a5f5);
+    border-color: #1e88e5;
+  }
+  ::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background {
+    background-color: #1e88e5 !important;
+    border-color: #1e88e5 !important;
+  }
+  

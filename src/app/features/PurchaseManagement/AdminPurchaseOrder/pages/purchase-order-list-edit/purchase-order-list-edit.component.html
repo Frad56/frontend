@@ -1,0 +1,75 @@
+<button mat-raised-button color="primary" (click)="goBack()">
+  Back
+</button>
+<table mat-table [dataSource]="(purchaseOrderLines) || []" class="mat-elevation-z8"  formArrayName="lines">
+  
+    <ng-container matColumnDef="Product_designation">
+        <th mat-header-cell *matHeaderCellDef> <div class="header-title"> Product_designation </div>  </th>
+        <td mat-cell *matCellDef="let purchaseOrderLine"> {{purchaseOrderLine.productVariant.product?.designation}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Product_variant_code">
+        <th mat-header-cell *matHeaderCellDef><div class="header-title"> Product_Variant_code </div> </th>
+        <td mat-cell *matCellDef="let purchaseOrderLine"> {{purchaseOrderLine.productVariant?.code}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Product_reference">
+      <th mat-header-cell *matHeaderCellDef> 
+        <div class="header-title"> Product_reference </div> </th>
+      <td mat-cell *matCellDef="let purchaseOrderLine"> 
+        {{purchaseOrderLine.productVariant.product?.reference}}
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Product_quantity">
+      <th mat-header-cell *matHeaderCellDef> <div class="header-title"> Quantity </div></th>
+      <td mat-cell  *matCellDef="let purchaseOrderLine">
+
+        {{purchaseOrderLine.quantity}}     
+     </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Product_Unit">
+        <th mat-header-cell *matHeaderCellDef> <div class="header-title"> Unit </div></th>
+        <td mat-cell  *matCellDef="let purchaseOrderLine">
+            {{purchaseOrderLine?.productUnitPurchase?.unit?.name}}
+        </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="discount">
+        <th mat-header-cell *matHeaderCellDef> <div class="header-title"> Discount </div></th>
+        <td mat-cell  *matCellDef="let purchaseOrderLine">
+            {{purchaseOrderLine?.discount}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> <div class="header-title"> Total </div></th>
+        <td mat-cell  *matCellDef="let purchaseOrderLine">
+            {{purchaseOrderLine.total}}
+        </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef><div class="header-title"> Actions </div> </th>
+      <td mat-cell *matCellDef="let purchaseOrderLine">
+        
+
+        <div class="icon-actions">
+          
+
+          <button mat-icon-button matTooltip="Edit" class="btn-edit" (click)="editPurchaseOrderLine(purchaseOrderLine.purchaseOrderLineId)" >
+            <img src="https://cdn-icons-png.flaticon.com/512/764/764599.png" alt="edit" width="20" height="20" >
+          </button>
+          
+        <!-- Delete -->
+        <button mat-icon-button matTooltip="Delete" class="btn-delete" (click)="deletePurchaseOrderLine(purchaseOrderLine.purchaseOrderLineId)">
+          <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png" alt="delete" width="20" height="20">
+        </button>
+        </div>
+      </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;" ></tr>
+    </table>

@@ -1,0 +1,111 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  }
+  
+  /* CARD */
+  .form-card {
+  width: 650px;
+  padding: 25px;
+  border: 2px solid rgba(18, 51, 117, 0.9);
+  background-color: rgb(242, 248, 250);
+  border-radius: 12px;
+  }
+  
+  /* TITLE */
+  .title {
+  text-align: center;
+  color: #123375;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  }
+  
+  /* FORM */
+  .form {
+  display: flex;
+  flex-direction: column;
+  }
+  
+  /* FULL WIDTH */
+  .full-width {
+  width: 100%;
+  margin-top: 10px;
+  }
+  
+  /* PRODUCT BADGE */
+  .product-badge {
+    display: flex;
+    justify-content: flex-start; /* pousse à gauche */
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px; /* petit décalage gauche */
+  }
+  
+  .badge-label {
+  background: #123375;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  }
+  
+  .badge-value {
+  color: #123375;
+  font-weight: 600;
+  }
+  
+  /* UNIT CONTAINER */
+  .unit-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  }
+  
+  .unit-field {
+  flex: 1;
+  }
+  
+  /* ADD BUTTON */
+  .add-unit-btn {
+  background-color: #123375 !important;
+  color: white !important;
+  height: 56px;
+  border-radius: 6px;
+  }
+  
+  /* BUTTON GROUP */
+  .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  }
+  
+  /* PRIMARY BUTTON */
+  .btn-blue {
+  background-color: #123375 !important;
+  color: white !important;
+  }
+  
+  /* OUTLINE BUTTON */
+  .btn-outline {
+  border: 1px solid #123375 !important;
+  color: #123375 !important;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+  .form-card {
+  width: 100%;
+  }
+  
+  .unit-container {
+  flex-direction: column;
+  }
+  }
+  

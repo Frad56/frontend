@@ -1,0 +1,95 @@
+<div class="page">
+
+  <mat-card class="form-card">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h2>Create Devis</h2>
+      <p>Create a new quotation with products</p>
+    </div>
+
+    <!-- FORM -->
+    <form [formGroup]="devisForm" (ngSubmit)="submit()" class="form">
+
+      <!-- CLIENT -->
+      <mat-form-field appearance="outline">
+        <mat-label>Client</mat-label>
+        <mat-select formControlName="client">
+          <mat-option value="">-- Select Client --</mat-option>
+          <mat-option *ngFor="let c of clients" [value]="c.id">
+            {{ c.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <hr>
+
+      <!-- LINES HEADER -->
+      <div class="lines-header">
+        <h3>Devis Lines</h3>
+
+        <button mat-raised-button color="primary" type="button" (click)="addLine()">
+          + Add Product
+        </button>
+      </div>
+
+      <!-- LINES -->
+      <div formArrayName="lines" class="lines">
+
+        <div *ngFor="let line of lines.controls; let i = index" [formGroupName]="i" class="line-row">
+
+          <!-- PRODUCT -->
+          <mat-form-field appearance="outline">
+            <mat-label>Product</mat-label>
+            <mat-select formControlName="product" (selectionChange)="onProductChange(i)">
+              <mat-option value="">Select</mat-option>
+              <mat-option *ngFor="let p of products" [value]="p.id">
+                {{ p.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- QUANTITY -->
+          <mat-form-field appearance="outline">
+            <mat-label>Qty</mat-label>
+            <input matInput type="number" formControlName="quantity">
+          </mat-form-field>
+
+          <!-- PRICE -->
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" formControlName="price">
+          </mat-form-field>
+
+          <!-- REMOVE -->
+          <button mat-icon-button color="warn" type="button" (click)="removeLine(i)">
+            ✖
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- TOTAL -->
+      <div class="total">
+        <h3>Total: {{ calculateTotal() }} DT</h3>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="button-group">
+
+        <button mat-raised-button class="btn-blue" type="submit">
+          Save Devis
+        </button>
+
+        <button mat-stroked-button class="btn-outline" type="button">
+          Cancel
+        </button>
+
+      </div>
+
+    </form>
+
+  </mat-card>
+
+</div>

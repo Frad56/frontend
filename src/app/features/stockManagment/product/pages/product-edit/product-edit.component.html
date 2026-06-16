@@ -1,0 +1,82 @@
+<div class="page">
+
+  <mat-card class="form-card">
+
+    <h2 class="title">Edit Product</h2>
+
+    <form [formGroup]="productForm"
+          (ngSubmit)="onSubmit()"
+          class="form">
+
+      <!-- Reference -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Reference</mat-label>
+        <input matInput formControlName="reference">
+      </mat-form-field>
+
+      <!-- Designation -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Designation</mat-label>
+        <input matInput formControlName="designation">
+      </mat-form-field>
+
+      <!-- Brand -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Brand</mat-label>
+        <input matInput formControlName="brand">
+      </mat-form-field>
+
+      <!-- Description -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+      </mat-form-field>
+
+      <!-- Price -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="basePrice">
+      </mat-form-field>
+
+      <!-- Category -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of categorys | async"
+                      [value]="category.categoryId">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Aisle -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Aisle / Rayon</mat-label>
+        <mat-select formControlName="aisleId">
+          <mat-option *ngFor="let aisle of aisles | async"
+                      [value]="aisle.aisleId">
+            {{ aisle.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Buttons -->
+      <div class="button-group">
+
+        <button mat-raised-button class="btn-blue" type="submit">
+          Update
+        </button>
+
+        <button mat-stroked-button class="btn-outline"
+                type="button"
+                (click)="goBack()">
+          Back
+        </button>
+
+      </div>
+
+    </form>
+
+  </mat-card>
+
+</div>

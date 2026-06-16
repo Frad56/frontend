@@ -1,0 +1,75 @@
+<div class="page">
+
+  <mat-card class="form-card">
+
+    <h2 class="title">Characteristic List</h2>
+
+    <div class="top-actions">
+
+      <button mat-raised-button class="btn-blue" (click)="addCharacteristic()">
+        Add Characteristic
+      </button>
+
+      <button mat-stroked-button class="btn-outline" (click)="goBack()">
+        Back
+      </button>
+
+    </div>
+
+    <table mat-table [dataSource]="(characteristics$ | async) || []"
+           class="custom-table mat-elevation-z2">
+
+      <!-- ID -->
+      <ng-container matColumnDef="characteristicId">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let characteristic">
+          {{ characteristic.characteristicId }}
+        </td>
+      </ng-container>
+
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let characteristic">
+          {{ characteristic.name }}
+        </td>
+      </ng-container>
+
+      <!-- Type -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let characteristic">
+          {{ characteristic.type }}
+        </td>
+      </ng-container>
+
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let characteristic">
+
+          <!-- Edit -->
+          <button mat-icon-button matTooltip="Edit" class="btn-edit"
+                  (click)="editCharacteristic(characteristic.characteristicId)">
+            <img src="https://cdn-icons-png.flaticon.com/512/764/764599.png"
+                 alt="edit" width="20" height="20">
+          </button>
+
+          <!-- Delete -->
+          <button mat-icon-button matTooltip="Delete" class="btn-delete"
+                  (click)="deleteCharacteristic(characteristic.characteristicId)">
+            <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png"
+                 alt="delete" width="20" height="20">
+          </button>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </mat-card>
+
+</div>

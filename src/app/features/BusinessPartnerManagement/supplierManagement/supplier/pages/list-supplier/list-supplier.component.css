@@ -1,0 +1,86 @@
+.supplier-card {
+  padding: 25px;
+  border-radius: 14px;
+  background: #fff;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #1976d2;
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: #777;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* BLUE BUTTON */
+.btn-blue {
+  background: linear-gradient(45deg, #1976d2, #42a5f5) !important;
+  color: white !important;
+  border-radius: 8px;
+}
+
+.btn-blue:hover {
+  background: #1565c0 !important;
+}
+
+/* OUTLINE BUTTON */
+.btn-outline {
+  border: 1px solid #1976d2 !important;
+  color: #1976d2 !important;
+  border-radius: 8px;
+}
+
+/* TABLE */
+.table-container {
+  overflow-x: auto;
+}
+
+.full-table {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* HEADER STYLE */
+th.mat-header-cell {
+  background: #f4f6f9;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ROW HOVER */
+.table-row:hover {
+  background: #f9fbff;
+  transition: 0.2s;
+}
+
+/* CENTER */
+.center {
+  text-align: center;
+}
+
+.btn-edit img {
+  filter: invert(29%) sepia(89%) saturate(1200%) hue-rotate(196deg) brightness(90%) contrast(95%);
+  /* résultat : bleu #1976d2 */
+}
+
+.btn-delete img {
+  filter: invert(20%) sepia(90%) saturate(2000%) hue-rotate(345deg) brightness(95%) contrast(95%);
+  /* résultat : rouge #e53935 */
+}

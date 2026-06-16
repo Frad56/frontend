@@ -1,0 +1,143 @@
+/* ===== PAGE LAYOUT ===== */
+:host {
+  display: block;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* ===== TITLE ===== */
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #0C447C;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #B5D4F4;
+}
+
+/* ===== FORM CONTAINER ===== */
+.form-container {
+  background: #fff;
+  border: 0.5px solid #B5D4F4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(24, 95, 165, 0.08);
+  max-width: 640px;
+}
+
+/* ===== FORM ===== */
+.supplier-form {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ===== ANGULAR MATERIAL OVERRIDES ===== */
+.full-width {
+  width: 100%;
+}
+
+/* Label color */
+.full-width .mat-mdc-form-field-label,
+.full-width .mdc-floating-label,
+.full-width label {
+  color: #185FA5 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+
+/* Outline border color */
+.full-width .mdc-notched-outline__leading,
+.full-width .mdc-notched-outline__notch,
+.full-width .mdc-notched-outline__trailing {
+  border-color: #B5D4F4 !important;
+  border-width: 1px !important;
+}
+
+/* Focused border */
+.full-width.mat-focused .mdc-notched-outline__leading,
+.full-width.mat-focused .mdc-notched-outline__notch,
+.full-width.mat-focused .mdc-notched-outline__trailing {
+  border-color: #378ADD !important;
+  border-width: 2px !important;
+}
+
+/* Input text */
+.full-width input.mat-mdc-input-element,
+.full-width textarea.mat-mdc-input-element {
+  color: #0C447C !important;
+  background: transparent;
+  font-size: 14px;
+}
+
+/* Input background */
+.full-width .mat-mdc-text-field-wrapper {
+  background: #f5f9ff !important;
+  border-radius: 8px !important;
+}
+
+/* Readonly textarea */
+.full-width textarea[readonly] {
+  color: #378ADD !important;
+  background: #EDF4FC !important;
+}
+
+/* Focus ring */
+.full-width .mat-mdc-form-field-focus-overlay {
+  background: rgba(55, 138, 221, 0.05) !important;
+}
+
+/* Ripple accent */
+.full-width .mat-mdc-form-field-ripple {
+  background-color: #378ADD !important;
+}
+
+/* ===== BUTTON GROUP ===== */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+/* Submit button */
+.button-group button[type="submit"].mat-mdc-raised-button,
+.button-group button[type="submit"].mat-raised-button {
+  background: #185FA5 !important;
+  color: #fff !important;
+  flex: 1;
+  height: 42px;
+  border-radius: 8px !important;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: none !important;
+  transition: background .15s;
+}
+
+.button-group button[type="submit"]:hover {
+  background: #0C447C !important;
+}
+
+.button-group button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Back button */
+.back-button.mat-mdc-raised-button,
+.back-button.mat-raised-button {
+  background: #fff !important;
+  color: #185FA5 !important;
+  border: 0.5px solid #B5D4F4 !important;
+  height: 42px;
+  border-radius: 8px !important;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: none !important;
+  transition: background .15s;
+}
+
+.back-button:hover {
+  background: #E6F1FB !important;
+}

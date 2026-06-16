@@ -1,0 +1,74 @@
+<mat-card class="product-card">
+  <mat-card-title>Product Variant List</mat-card-title>
+
+  <div class="top-actions">
+    <button mat-raised-button class="btn-blue" (click)="addProductVariant()">Add</button>
+    <button mat-stroked-button class="btn-outline" (click)="goBack()">Back</button>
+  </div>
+
+  <table mat-table [dataSource]="productVariants" class="mat-elevation-z8">
+
+
+    <!-- Code -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef>Code</th>
+      <td mat-cell *matCellDef="let v">{{ v.code }}</td>
+    </ng-container>
+
+    <!-- Price -->
+    <ng-container matColumnDef="specificPrice">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let v">{{ v.specificPrice }}</td>
+    </ng-container>
+
+    <!-- Stock -->
+    <ng-container matColumnDef="quantityInStock">
+      <th mat-header-cell *matHeaderCellDef>Stock</th>
+      <td mat-cell *matCellDef="let v">{{ v.quantityInStock }}</td>
+    </ng-container>
+
+    <!-- Product -->
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef>Product</th>
+      <td mat-cell *matCellDef="let v">{{ v.product.reference }}</td>
+    </ng-container>
+
+    <!-- Characteristics -->
+    <ng-container matColumnDef="charcteristic">
+      <th mat-header-cell *matHeaderCellDef>Characteristics</th>
+      <td mat-cell *matCellDef="let v">
+        <div *ngIf="characteristicsMap[v.productVariantId]">
+          <div *ngFor="let c of characteristicsMap[v.productVariantId] | keyvalue">
+            {{ c.key }} : {{ c.value }}
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let v">
+        <button class="action-btn btn-blue"  (click)="addProductUnitsale(v.productVariantId)" matTooltip="Add Unit Sale">
+          add Product Unit Sale
+        </button>
+        <button class="action-btn btn-unit-sale btn-blue"  (click)="findProductUnitSale(v.productVariantId)" matTooltip="see Product Unit Sale List">
+          Unit Sale List
+       </button>
+        <button mat-icon-button matTooltip="Edit" class="btn-edit"
+                (click)="editProductVariant(v.productVariantId)">
+          <img src="https://cdn-icons-png.flaticon.com/512/764/764599.png" alt="edit" width="20" height="20">
+        </button>
+        <button mat-icon-button matTooltip="Delete" class="btn-delete"
+                (click)="deleteProductVariant(v.productVariantId)">
+          <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png" alt="delete" width="20" height="20">
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+</mat-card>

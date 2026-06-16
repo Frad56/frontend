@@ -1,0 +1,83 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 20px;
+}
+
+.form-card {
+  width: 850px;
+  padding: 30px;
+  border-radius: 14px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.header p {
+  margin: 5px 0 0;
+  color: #777;
+}
+
+.lines-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.line-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.total {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.btn-blue {
+  background: linear-gradient(45deg, #1976d2, #42a5f5) !important;
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+.btn-outline {
+  border: 1px solid #1976d2 !important;
+  color: #1976d2 !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+}

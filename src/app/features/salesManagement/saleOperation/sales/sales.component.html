@@ -1,0 +1,47 @@
+<div class="sales-page">
+  <h3 class="section-title">Search Product</h3>
+  <!-- SEARCH -->
+  <app-product-variant-search-by-code class="card-style"
+    (productSelected)="addProduct($event)">
+  </app-product-variant-search-by-code>
+
+
+  <!-- CART -->
+  <h3 class="section-title">Cart</h3>
+  <app-cart class="card-style"
+    [items]="cartItems"
+    (cartUpdated)="updateCart($event)">
+  </app-cart>
+
+  <hr>
+  <div class="client-section">
+    <app-search-client
+      (clientSelected)="onClientSelected($event)">
+    </app-search-client>
+
+    <!-- Client sélectionné -->
+    <h3 class="section-title">Client</h3>
+    <div *ngIf="selectedClient" class="selected-client">
+      <span>
+        Client : <strong>{{ selectedClient.firstName }} {{ selectedClient.lastName }}</strong>
+      </span>
+      <button (click)="removeSelectedClient()">✕</button>
+    </div>
+
+    <div *ngIf="!selectedClient" class="info-message">
+      No client selected (anonymous/counter sale)
+    </div>
+  </div>
+  
+  <!-- CHECKOUT -->
+  <div class="top-bar">
+    <button mat-raised-button class="btn-outline" (click)="goBack()">
+      Back
+    </button>
+  
+    <app-checkout 
+      [items]="cartItems"
+      (orderConfirmed)="confirmOrder($event)">
+    </app-checkout>
+  </div>
+</div>

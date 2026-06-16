@@ -1,0 +1,46 @@
+<h2 class="title">Edit Category</h2>
+
+<div class="form-container">
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="category-form ">
+
+    <!-- Name -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" placeholder="name">
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" formControlName="description" placeholder="description">
+    </mat-form-field>
+
+    <!-- Parent -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Parent</mat-label>
+      <mat-select formControlName="parentId">
+        <mat-option *ngFor="let category of parentCategories | async"
+                    [value]="category.categoryId">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+   
+
+    <div class="button-group">
+      <button mat-raised-button class="Create-button" color="primary" type="submit">
+        Create
+      </button>
+
+      <button type="button"
+              class="back-button"
+              mat-raised-button
+              color="primary"
+              (click)="goBack()">
+        Back
+      </button>
+    </div>
+
+  </form>
+</div>

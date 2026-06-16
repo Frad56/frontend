@@ -1,0 +1,156 @@
+.sales-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: #1f2937;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #374151;
+    border-left: 4px solid #3b82f6;
+    padding-left: 10px;
+  }
+  
+  .card-style {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .client-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .selected-client {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+  
+  .selected-client strong {
+    color: #065f46;
+  }
+  
+  .selected-client button {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    transition: background 0.15s;
+  }
+  
+  .selected-client button:hover {
+    background: #fee2e2;
+  }
+  
+  .info-message {
+    font-size: 0.9rem;
+    color: #6b7280;
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  
+  .info-message.error {
+    color: #b91c1c;
+    background: #fef2f2;
+    border-color: #fca5a5;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 0;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .top-bar button[mat-raised-button] {
+    border-radius: 8px;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .top-bar button[mat-raised-button] {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.15s;
+  }
+  
+  /* BACK BUTTON -> outline style */
+  .top-bar button[color="primary"] {
+    border: 1px solid #123375 !important;
+    color: #123375 !important;
+    background: transparent !important;
+  }
+  
+  .top-bar button[color="primary"]:hover {
+    background-color: rgba(18, 51, 117, 0.08) !important;
+  }
+  
+  /* CONFIRM BUTTON (checkout) -> filled blue style */
+  .checkout button {
+    background-color: #123375 !important;
+    color: white !important;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.1s;
+  }
+  
+  .checkout button:hover {
+    background-color: #0e2a5e !important;
+    transform: translateY(-1px);
+  }
+  
+  .checkout button:active {
+    transform: translateY(0);
+  }

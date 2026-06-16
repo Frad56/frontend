@@ -1,0 +1,122 @@
+<div class="page-container">
+  <div class="card">
+
+    <div class="card-header">
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        Store Management
+      </div>
+      <h2>Create Product</h2>
+      <p>Add a new product to your inventory</p>
+    </div>
+
+    <form [formGroup]="productForm" class="form-body">
+
+      <p class="sec-title">Product info</p>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>Reference</label>
+          <input formControlName="reference" placeholder="e.g. PRD-001">
+        </div>
+        <div class="field">
+          <label>Designation</label>
+          <input formControlName="designation" placeholder="Product name">
+        </div>
+        <div class="field">
+          <label>Brand</label>
+          <input formControlName="brand" placeholder="Brand name">
+        </div>
+        <div class="field">
+          <label>Price</label>
+          <div class="prefix-wrap">
+            <span class="prefix-sym"></span>
+            <input type="number" formControlName="basePrice" placeholder="DT0.00" min="0">
+          </div>
+        </div>
+        <div class="field grid-full">
+          <label>Description</label>
+          <textarea rows="3" formControlName="description"
+                    placeholder="Describe this product..."></textarea>
+        </div>
+      </div>
+
+      <p class="sec-title">Classification</p>
+
+      <div class="grid-2">
+
+        <div class="field">
+          <label>Category</label>
+          <div class="field-row">
+            <select formControlName="categoryId" class="flex-1">
+              <option value="" disabled>Select a category</option>
+              <option
+                *ngFor="let cat of flatCategories"
+                [value]="cat.categoryId"
+                [disabled]="!cat.isLeaf">
+                {{ cat.label }}
+              </option>
+            </select>
+            <button type="button" class="add-btn" (click)="addCategory()">
+              <span class="plus-icon">+</span> Add
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Aisle / Rayon</label>
+          <div class="field-row">
+            <select formControlName="aisleId" class="flex-1">
+              <option value="" disabled>Select an aisle</option>
+              <option *ngFor="let aisle of aisles | async"
+                      [value]="aisle.aisleId">
+                {{ aisle.name }}
+              </option>
+            </select>
+            <button type="button" class="add-btn" (click)="addAisle()">
+              <span class="plus-icon">+</span> Add
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="char-box">
+        <div class="char-top">
+          <div class="char-left">
+            <span class="char-label">Characteristics</span>
+            <span class="char-badge">{{ selectedCount() }} selected</span>
+          </div>
+          <button type="button" class="char-sel-all"
+                  (click)="update(!characteristicsState().completed)">
+            {{ characteristicsState().completed ? 'Deselect all' : 'Select all' }}
+          </button>
+        </div>
+        <div class="char-list">
+          <div class="char-tag"
+               *ngFor="let item of characteristicsState().items; let i = index"
+               [class.active]="item.completed"
+               (click)="update(!item.completed, i)">
+            <span class="check-sym" *ngIf="item.completed">✓</span>
+            {{ item.name }}
+          </div>
+          <button class="char-tag char-add" type="button" (click)="AddCharacteristic()">
+            <span>+</span> Add
+          </button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="actions">
+        <button type="button" class="btn-primary" (click)="createProduct()">
+          ✓ &nbsp;Create Product
+        </button>
+        <button type="button" class="btn-back" (click)="goBack()">
+          Back
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

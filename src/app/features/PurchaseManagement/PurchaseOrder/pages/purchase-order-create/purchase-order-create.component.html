@@ -1,0 +1,8 @@
+<p>purchase-order-create works!</p>
+<form [formGroup]="purchaseOrderForm">
+<mat-label >Product</mat-label>
+<mat-select formControlName="supplierId">
+  <mat-option *ngFor="let supplier of suppliers$ |async" 
+  [value]="supplier.supplierId" >{{ supplier.companyName }}</mat-option>
+</mat-select>
+</form>
