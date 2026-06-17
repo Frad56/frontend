@@ -1,6 +1,11 @@
 [build]
   command = "ng build --configuration production"
-  publish = "dist/nom-de-ton-projet/browser"
+  publish = "dist/frontend/browser"
 
 [build.environment]
   NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
