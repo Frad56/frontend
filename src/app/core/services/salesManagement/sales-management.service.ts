@@ -6,6 +6,6 @@ import { Injectable, inject } from '@angular/core';
 })
 export class SalesManagementService {
 
-  private apiUrl = 'http://localhost:8080/api/aisle';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/aisle';
   private http = inject(HttpClient);
 }

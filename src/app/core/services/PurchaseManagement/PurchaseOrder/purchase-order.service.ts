@@ -9,7 +9,7 @@ import { PurchaseOrderDTORequest } from '../../../../shared/models/dto/PurchaseM
   providedIn: 'root'
 })
 export class PurchaseOrderService {
-  private apiUrl = 'http://localhost:8080/api/purchaseOrder';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/purchaseOrder';
   private http = inject(HttpClient);
   id!:number;
   getPurchaseOrderList():Observable<PurchaseOrder[]>{

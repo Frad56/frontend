@@ -10,7 +10,7 @@ import { CategoryTest } from '../../../../shared/models/StockManagment/CategoryT
 })
 export class CategoryService {
 
-  private apiUrl = 'http://localhost:8080/api/category/';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/category/';
   private http = inject(HttpClient);
 
   getCategories():Observable<Category[]>{

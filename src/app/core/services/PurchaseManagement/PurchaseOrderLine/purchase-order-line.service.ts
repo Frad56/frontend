@@ -10,7 +10,7 @@ import { PurchaseOrderLineRequest } from '../../../../shared/models/Request/Purc
 })
 export class PurchaseOrderLineService {
 
-  private apiUrl = 'http://localhost:8080/api/purchaseOrderLine';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/purchaseOrderLine';
   private http = inject(HttpClient);
 
   getPurchaseOrderLineList():Observable<PurchaseOrderLine[]>{

@@ -10,7 +10,7 @@ import { ProductUnitSaleDTO } from '../../../../shared/models/dto/stockManagment
 export class ProductUnitSaleService {
 
  
-  private apiUrl = 'http://localhost:8080/api/productUnitSale';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/productUnitSale';
   private http = inject(HttpClient);
 
   getAllProductUnitSale():Observable<ProductUnitSale[]>{

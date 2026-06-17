@@ -9,7 +9,7 @@ import { ProductCharacteristicDTO } from '../../../../shared/models/dto/stockMan
 })
 export class ProductCharacteristicService {
 
-  private apiUrl = 'http://localhost:8080/api/productCharacteristic';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/productCharacteristic';
   private http = inject(HttpClient);
 
   getProductCharacteristic():Observable<ProductCharacteristic[]>{

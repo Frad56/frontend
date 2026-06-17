@@ -9,7 +9,7 @@ import { MovementInStockDTO } from '../../../../shared/models/dto/stockManagment
 })
 export class MovementInStockService {
 
-  private apiUrl = 'http://localhost:8080/api/movementInStock';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/movementInStock';
   private http = inject(HttpClient);
 
   getMovementInStockList():Observable<MovementInStock[]>{

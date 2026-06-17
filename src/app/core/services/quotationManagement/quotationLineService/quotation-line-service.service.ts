@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class QuotationLineServiceService {
 
-  private apiUrl = 'http://localhost:8080/api/quotationLine';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/quotationLine';
   private http = inject(HttpClient);
 
   findQuotatioLinesByQuotationId(id:number):Observable<QuotationLine[]>{

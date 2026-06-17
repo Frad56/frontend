@@ -9,7 +9,7 @@ import { SupplierDTO } from '../../../../shared/models/dto/BusinessPartnerDTO/su
 })
 export class SupplierService {
 
-  private apiUrl = 'http://localhost:8080/api/supplier';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/supplier';
   private http = inject(HttpClient);
 
   constructor() {}

@@ -8,7 +8,7 @@ import { Quotation } from '../../../../shared/models/quotationManagement/Quotati
 })
 export class QuotationService {
 
-  private apiUrl = 'http://localhost:8080/api/quotation';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/quotation';
   private http = inject(HttpClient);
 
   addQuotation(quotation :Quotation):Observable<Quotation>{

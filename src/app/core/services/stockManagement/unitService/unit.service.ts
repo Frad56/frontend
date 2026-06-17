@@ -9,7 +9,7 @@ import { UnitDTO } from '../../../../shared/models/dto/stockManagmentDTO/Unit.dt
 })
 export class UnitService {
 
-  private apiUrl = 'http://localhost:8080/api/unit';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/unit';
   private http = inject(HttpClient);
 
   getUnits():Observable<Unit[]>{

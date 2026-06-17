@@ -7,7 +7,7 @@ import { ProductSupplierDTO } from '../../../../shared/models/dto/BusinessPartne
 })
 export class ProductSupplierService {
 
-  private apiUrl = 'http://localhost:8080/api/productSupplier';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/productSupplier';
   private http = inject(HttpClient);
 
 

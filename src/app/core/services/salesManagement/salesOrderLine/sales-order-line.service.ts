@@ -9,7 +9,7 @@ import { SalesOrderLineDTO } from '../../../../shared/models/dto/SalesManegement
 })
 export class SalesOrderLineService {
 
-  private apiUrl = 'http://localhost:8080/api/salesOrderLine';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/salesOrderLine';
   private http = inject(HttpClient);
 
 

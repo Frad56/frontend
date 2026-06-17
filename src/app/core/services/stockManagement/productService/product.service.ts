@@ -10,7 +10,7 @@ import { CategoryRequest } from '../../../../shared/models/Request/CategoryReque
   providedIn: 'root'
 })
 export class ProductService {
-private apiUrl = 'http://localhost:8080/api/product';
+private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/product';
 private http = inject(HttpClient);
 
 

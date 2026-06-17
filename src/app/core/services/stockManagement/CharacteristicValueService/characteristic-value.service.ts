@@ -9,7 +9,7 @@ import { CharacteristicValueDTO } from '../../../../shared/models/dto/stockManag
 })
 export class CharacteristicValueService {
 
-  private apiUrl = 'http://localhost:8080/api/characteristicValue';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/characteristicValue';
   private http = inject(HttpClient);
 
   getAllCharacteristicValue():Observable<CharacteristicValue[]>{

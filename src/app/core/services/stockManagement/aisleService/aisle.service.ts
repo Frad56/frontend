@@ -8,7 +8,7 @@ import { Observable, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class AisleService {
-  private apiUrl = 'http://localhost:8080/api/aisle';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/aisle';
   private http = inject(HttpClient);
 
   getAisles():Observable<Aisle[]>{

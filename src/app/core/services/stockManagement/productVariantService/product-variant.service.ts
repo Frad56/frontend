@@ -14,7 +14,7 @@ import { CodeRequest } from '../../../../shared/models/Request/CodeRequest';
 })
 export class ProductVariantService {
 
-  private apiUrl = 'http://localhost:8080/api/productVariant';
+  private apiUrl = 'https://finalstockmanagement-8.onrender.com/api/productVariant';
   private http = inject(HttpClient);
 
   getProductVariant():Observable<ProductVariant[]>{
